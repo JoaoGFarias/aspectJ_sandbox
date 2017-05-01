@@ -7,7 +7,7 @@ public class Display {
 	
 	public Display() {
 		this.id = System.identityHashCode(this);
-	} 
+	}
     
     public void update(Shape s) {
     	System.out.println("Figure " + s +" updated on display " + this.id + ".");
