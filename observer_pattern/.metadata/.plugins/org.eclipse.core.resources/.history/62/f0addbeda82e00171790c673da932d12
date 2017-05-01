@@ -1,0 +1,53 @@
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector<Display> Shape.observers = new Vector<Display>();
+
+    public void Shape.addObserver(Display s) {
+        this.observers.add(s);
+    }
+    
+    public void Shape.removeObserver(Display s) {
+        this.observers.remove(s);
+    }
+    
+    public void Shape.updateObserver(Display s) {
+        s.update(this);
+    }
+
+    pointcut updates(Shape s): target(s) &&
+    							(
+    								execution(void Shape.moveBy(int, int)) ||
+    								execution(void Point.set*(int))
+    							);
+
+    after(Shape s): updates(s) {
+    	
+    	for(Display observer: s.observers){
+    		s.updateObserver(observer);
+    	}
+    }
+
+	
+}

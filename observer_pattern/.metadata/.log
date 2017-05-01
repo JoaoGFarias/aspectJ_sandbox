@@ -130,3 +130,4745 @@ java.lang.NullPointerException
 	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
 	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2017-05-01 16:13:02.089 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -keyring /Users/jgfd/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -data /Users/jgfd/Documents/aspectJ_sandbox/observer_pattern -product org.eclipse.epp.package.jee.product -keyring /Users/jgfd/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2017-05-01 16:13:13.754
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2017-05-01 16:16:48.108 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -keyring /Users/jgfd/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -data /Users/jgfd/Documents/aspectJ_sandbox/observer_pattern -product org.eclipse.epp.package.jee.product -keyring /Users/jgfd/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2017-05-01 16:16:58.319
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jface.text 2 0 2017-05-01 16:25:53.414
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-05-01 16:25:53.434
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-05-01 16:27:15.845
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-05-01 16:27:15.847
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jdt.core 4 1005 2017-05-01 16:42:20.979
+!MESSAGE All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Line implements Shape {//, Subject {
+	private Point p1, p2;
+//	private List<Observer> observers;
+
+	Line(Point p1, Point p2) {
+		super();
+		this.p1 = p1;
+		this.p2 = p2;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public Point getP1() { return p1; }
+	public Point getP2() { return p2; }
+
+	public void setP1(Point p1) { 
+		this.p1 = p1; 
+//		this.notifyObservers();
+	}
+	
+	public void setP2(Point p2) { 
+		this.p2 = p2; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		getP1().moveBy(dx, dy);
+		getP2().moveBy(dx, dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = observers.indexOf(o);
+//		if(i >= 0){
+//			observers.remove(o);
+//		}
+//	}
+
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < observers.size(); i++) {
+//			Observer observer = (Observer)observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+
+public interface Subject {
+	
+	public void registerObserver(Observer o);
+	public void removeObserver(Observer o);
+	public void notifyObservers();
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Display{ //implements Observer{
+	
+//	private Subject subject;
+//	private List<Subject> subjects;
+	
+//	public Display(Subject subject){
+//		this.subject = subject;
+//		this.subject.registerObserver(this);
+//	}
+	
+	public Display(){
+//		this.subjects = new ArrayList<>();
+	}
+	
+//	public void addSubject(Subject subject){
+//		subject.registerObserver(this);
+//		this.subjects.add(subject);
+//	}
+    
+    public void update(Shape s) {
+    	System.out.println("Figure "+s+" updated!!");
+    }
+
+//	@Override
+//	public void update(Object obs) {
+//		this.update((Shape)obs);
+//	}
+}
+    
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package figures;
+
+public class MainObserverPattern {
+
+	public static void main(String[] args) {
+		// Creating points and a line
+		Point p1 = new Point(10, 10);
+		Point p2 = new Point(10, 10);
+		Line line = new Line(p1, p2);
+		
+		// Creating a display
+		Display display = new Display();
+		display.addSubject(p1);
+		display.addSubject(p2);
+		display.addSubject(line);
+		
+		// Creating a second display
+//		Display display2 = new Display();
+//		display2.addSubject(p1);
+//		display2.addSubject(p2);
+//		display2.addSubject(line);
+
+		System.out.println("Point moves...");
+		p1.setX(11);
+		p2.setX(11);
+		System.out.println();
+		System.out.println("Line moves...");
+		line.moveBy(20, 20);
+	}
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+public interface Shape {
+
+
+	public abstract void moveBy(int dx, int dy);
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Point implements Shape {//, Subject {
+	private int x = 0, y = 0;
+//	private List<Observer> observers;
+
+	Point(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public int getX() { return x; }
+	public int getY() { return y; }
+
+	public void setX(int x) { 
+		this.x = x; 
+//		this.notifyObservers();
+	}
+	public void setY(int y) { 
+		this.y = y; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		setX(getX() + dx);
+		setY(getY() + dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//		
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = this.observers.indexOf(o);
+//		if(i >= 0){
+//			this.observers.remove(o);
+//		}
+//	}
+//
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < this.observers.size(); i++) {
+//			Observer observer = this.observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+!STACK 0
+java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Line implements Shape {//, Subject {
+	private Point p1, p2;
+//	private List<Observer> observers;
+
+	Line(Point p1, Point p2) {
+		super();
+		this.p1 = p1;
+		this.p2 = p2;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public Point getP1() { return p1; }
+	public Point getP2() { return p2; }
+
+	public void setP1(Point p1) { 
+		this.p1 = p1; 
+//		this.notifyObservers();
+	}
+	
+	public void setP2(Point p2) { 
+		this.p2 = p2; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		getP1().moveBy(dx, dy);
+		getP2().moveBy(dx, dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = observers.indexOf(o);
+//		if(i >= 0){
+//			observers.remove(o);
+//		}
+//	}
+
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < observers.size(); i++) {
+//			Observer observer = (Observer)observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+
+public interface Subject {
+	
+	public void registerObserver(Observer o);
+	public void removeObserver(Observer o);
+	public void notifyObservers();
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Display{ //implements Observer{
+	
+//	private Subject subject;
+//	private List<Subject> subjects;
+	
+//	public Display(Subject subject){
+//		this.subject = subject;
+//		this.subject.registerObserver(this);
+//	}
+	
+	public Display(){
+//		this.subjects = new ArrayList<>();
+	}
+	
+//	public void addSubject(Subject subject){
+//		subject.registerObserver(this);
+//		this.subjects.add(subject);
+//	}
+    
+    public void update(Shape s) {
+    	System.out.println("Figure "+s+" updated!!");
+    }
+
+//	@Override
+//	public void update(Object obs) {
+//		this.update((Shape)obs);
+//	}
+}
+    
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package figures;
+
+public class MainObserverPattern {
+
+	public static void main(String[] args) {
+		// Creating points and a line
+		Point p1 = new Point(10, 10);
+		Point p2 = new Point(10, 10);
+		Line line = new Line(p1, p2);
+		
+		// Creating a display
+		Display display = new Display();
+		display.addSubject(p1);
+		display.addSubject(p2);
+		display.addSubject(line);
+		
+		// Creating a second display
+//		Display display2 = new Display();
+//		display2.addSubject(p1);
+//		display2.addSubject(p2);
+//		display2.addSubject(line);
+
+		System.out.println("Point moves...");
+		p1.setX(11);
+		p2.setX(11);
+		System.out.println();
+		System.out.println("Line moves...");
+		line.moveBy(20, 20);
+	}
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+public interface Shape {
+
+
+	public abstract void moveBy(int dx, int dy);
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Point implements Shape {//, Subject {
+	private int x = 0, y = 0;
+//	private List<Observer> observers;
+
+	Point(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public int getX() { return x; }
+	public int getY() { return y; }
+
+	public void setX(int x) { 
+		this.x = x; 
+//		this.notifyObservers();
+	}
+	public void setY(int y) { 
+		this.y = y; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		setX(getX() + dx);
+		setY(getY() + dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//		
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = this.observers.indexOf(o);
+//		if(i >= 0){
+//			this.observers.remove(o);
+//		}
+//	}
+//
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < this.observers.size(); i++) {
+//			Observer observer = this.observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:299)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:188)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.makeConsistent(AJReconcileWorkingCopyOperation.java:244)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.executeOperation(AJReconcileWorkingCopyOperation.java:121)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.reconcile(AJCompilationUnit.java:519)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: -1
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.consumeNormalAnnotation(AJSourceElementParser2.java:569)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.consumeRule(Parser.java:6107)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11141)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parseStatements(Parser.java:11749)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisitMethod(Parser.java:12048)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisit(Parser.java:12034)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.traverse(MethodDeclaration.java:357)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.recoverStatements(Parser.java:12142)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11204)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11490)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.parseStatements(MethodDeclaration.java:191)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:875)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.getMethodBodies(Parser.java:10179)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.parseCompilationUnit(AJSourceElementParser2.java:971)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:241)
+	... 16 more
+
+!ENTRY org.eclipse.jdt.ui 4 2 2017-05-01 16:42:20.984
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 1
+Java Model Exception: java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Line implements Shape {//, Subject {
+	private Point p1, p2;
+//	private List<Observer> observers;
+
+	Line(Point p1, Point p2) {
+		super();
+		this.p1 = p1;
+		this.p2 = p2;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public Point getP1() { return p1; }
+	public Point getP2() { return p2; }
+
+	public void setP1(Point p1) { 
+		this.p1 = p1; 
+//		this.notifyObservers();
+	}
+	
+	public void setP2(Point p2) { 
+		this.p2 = p2; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		getP1().moveBy(dx, dy);
+		getP2().moveBy(dx, dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = observers.indexOf(o);
+//		if(i >= 0){
+//			observers.remove(o);
+//		}
+//	}
+
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < observers.size(); i++) {
+//			Observer observer = (Observer)observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+
+public interface Subject {
+	
+	public void registerObserver(Observer o);
+	public void removeObserver(Observer o);
+	public void notifyObservers();
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Display{ //implements Observer{
+	
+//	private Subject subject;
+//	private List<Subject> subjects;
+	
+//	public Display(Subject subject){
+//		this.subject = subject;
+//		this.subject.registerObserver(this);
+//	}
+	
+	public Display(){
+//		this.subjects = new ArrayList<>();
+	}
+	
+//	public void addSubject(Subject subject){
+//		subject.registerObserver(this);
+//		this.subjects.add(subject);
+//	}
+    
+    public void update(Shape s) {
+    	System.out.println("Figure "+s+" updated!!");
+    }
+
+//	@Override
+//	public void update(Object obs) {
+//		this.update((Shape)obs);
+//	}
+}
+    
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package figures;
+
+public class MainObserverPattern {
+
+	public static void main(String[] args) {
+		// Creating points and a line
+		Point p1 = new Point(10, 10);
+		Point p2 = new Point(10, 10);
+		Line line = new Line(p1, p2);
+		
+		// Creating a display
+		Display display = new Display();
+		display.addSubject(p1);
+		display.addSubject(p2);
+		display.addSubject(line);
+		
+		// Creating a second display
+//		Display display2 = new Display();
+//		display2.addSubject(p1);
+//		display2.addSubject(p2);
+//		display2.addSubject(line);
+
+		System.out.println("Point moves...");
+		p1.setX(11);
+		p2.setX(11);
+		System.out.println();
+		System.out.println("Line moves...");
+		line.moveBy(20, 20);
+	}
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+public interface Shape {
+
+
+	public abstract void moveBy(int dx, int dy);
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Point implements Shape {//, Subject {
+	private int x = 0, y = 0;
+//	private List<Observer> observers;
+
+	Point(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public int getX() { return x; }
+	public int getY() { return y; }
+
+	public void setX(int x) { 
+		this.x = x; 
+//		this.notifyObservers();
+	}
+	public void setY(int y) { 
+		this.y = y; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		setX(getX() + dx);
+		setY(getY() + dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//		
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = this.observers.indexOf(o);
+//		if(i >= 0){
+//			this.observers.remove(o);
+//		}
+//	}
+//
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < this.observers.size(); i++) {
+//			Observer observer = this.observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:299)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:188)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.makeConsistent(AJReconcileWorkingCopyOperation.java:244)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.executeOperation(AJReconcileWorkingCopyOperation.java:121)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.reconcile(AJCompilationUnit.java:519)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+Caused by: java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Line implements Shape {//, Subject {
+	private Point p1, p2;
+//	private List<Observer> observers;
+
+	Line(Point p1, Point p2) {
+		super();
+		this.p1 = p1;
+		this.p2 = p2;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public Point getP1() { return p1; }
+	public Point getP2() { return p2; }
+
+	public void setP1(Point p1) { 
+		this.p1 = p1; 
+//		this.notifyObservers();
+	}
+	
+	public void setP2(Point p2) { 
+		this.p2 = p2; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		getP1().moveBy(dx, dy);
+		getP2().moveBy(dx, dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = observers.indexOf(o);
+//		if(i >= 0){
+//			observers.remove(o);
+//		}
+//	}
+
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < observers.size(); i++) {
+//			Observer observer = (Observer)observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+
+public interface Subject {
+	
+	public void registerObserver(Observer o);
+	public void removeObserver(Observer o);
+	public void notifyObservers();
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Display{ //implements Observer{
+	
+//	private Subject subject;
+//	private List<Subject> subjects;
+	
+//	public Display(Subject subject){
+//		this.subject = subject;
+//		this.subject.registerObserver(this);
+//	}
+	
+	public Display(){
+//		this.subjects = new ArrayList<>();
+	}
+	
+//	public void addSubject(Subject subject){
+//		subject.registerObserver(this);
+//		this.subjects.add(subject);
+//	}
+    
+    public void update(Shape s) {
+    	System.out.println("Figure "+s+" updated!!");
+    }
+
+//	@Override
+//	public void update(Object obs) {
+//		this.update((Shape)obs);
+//	}
+}
+    
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package figures;
+
+public class MainObserverPattern {
+
+	public static void main(String[] args) {
+		// Creating points and a line
+		Point p1 = new Point(10, 10);
+		Point p2 = new Point(10, 10);
+		Line line = new Line(p1, p2);
+		
+		// Creating a display
+		Display display = new Display();
+		display.addSubject(p1);
+		display.addSubject(p2);
+		display.addSubject(line);
+		
+		// Creating a second display
+//		Display display2 = new Display();
+//		display2.addSubject(p1);
+//		display2.addSubject(p2);
+//		display2.addSubject(line);
+
+		System.out.println("Point moves...");
+		p1.setX(11);
+		p2.setX(11);
+		System.out.println();
+		System.out.println("Line moves...");
+		line.moveBy(20, 20);
+	}
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+public interface Shape {
+
+
+	public abstract void moveBy(int dx, int dy);
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Point implements Shape {//, Subject {
+	private int x = 0, y = 0;
+//	private List<Observer> observers;
+
+	Point(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public int getX() { return x; }
+	public int getY() { return y; }
+
+	public void setX(int x) { 
+		this.x = x; 
+//		this.notifyObservers();
+	}
+	public void setY(int y) { 
+		this.y = y; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		setX(getX() + dx);
+		setY(getY() + dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//		
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = this.observers.indexOf(o);
+//		if(i >= 0){
+//			this.observers.remove(o);
+//		}
+//	}
+//
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < this.observers.size(); i++) {
+//			Observer observer = this.observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	... 17 more
+Caused by: java.lang.ArrayIndexOutOfBoundsException: -1
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.consumeNormalAnnotation(AJSourceElementParser2.java:569)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.consumeRule(Parser.java:6107)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11141)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parseStatements(Parser.java:11749)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisitMethod(Parser.java:12048)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisit(Parser.java:12034)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.traverse(MethodDeclaration.java:357)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.recoverStatements(Parser.java:12142)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11204)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11490)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.parseStatements(MethodDeclaration.java:191)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:875)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.getMethodBodies(Parser.java:10179)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.parseCompilationUnit(AJSourceElementParser2.java:971)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:241)
+	... 16 more
+Caused by: java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Line implements Shape {//, Subject {
+	private Point p1, p2;
+//	private List<Observer> observers;
+
+	Line(Point p1, Point p2) {
+		super();
+		this.p1 = p1;
+		this.p2 = p2;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public Point getP1() { return p1; }
+	public Point getP2() { return p2; }
+
+	public void setP1(Point p1) { 
+		this.p1 = p1; 
+//		this.notifyObservers();
+	}
+	
+	public void setP2(Point p2) { 
+		this.p2 = p2; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		getP1().moveBy(dx, dy);
+		getP2().moveBy(dx, dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = observers.indexOf(o);
+//		if(i >= 0){
+//			observers.remove(o);
+//		}
+//	}
+
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < observers.size(); i++) {
+//			Observer observer = (Observer)observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+
+public interface Subject {
+	
+	public void registerObserver(Observer o);
+	public void removeObserver(Observer o);
+	public void notifyObservers();
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Display{ //implements Observer{
+	
+//	private Subject subject;
+//	private List<Subject> subjects;
+	
+//	public Display(Subject subject){
+//		this.subject = subject;
+//		this.subject.registerObserver(this);
+//	}
+	
+	public Display(){
+//		this.subjects = new ArrayList<>();
+	}
+	
+//	public void addSubject(Subject subject){
+//		subject.registerObserver(this);
+//		this.subjects.add(subject);
+//	}
+    
+    public void update(Shape s) {
+    	System.out.println("Figure "+s+" updated!!");
+    }
+
+//	@Override
+//	public void update(Object obs) {
+//		this.update((Shape)obs);
+//	}
+}
+    
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package figures;
+
+public class MainObserverPattern {
+
+	public static void main(String[] args) {
+		// Creating points and a line
+		Point p1 = new Point(10, 10);
+		Point p2 = new Point(10, 10);
+		Line line = new Line(p1, p2);
+		
+		// Creating a display
+		Display display = new Display();
+		display.addSubject(p1);
+		display.addSubject(p2);
+		display.addSubject(line);
+		
+		// Creating a second display
+//		Display display2 = new Display();
+//		display2.addSubject(p1);
+//		display2.addSubject(p2);
+//		display2.addSubject(line);
+
+		System.out.println("Point moves...");
+		p1.setX(11);
+		p2.setX(11);
+		System.out.println();
+		System.out.println("Line moves...");
+		line.moveBy(20, 20);
+	}
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+public interface Shape {
+
+
+	public abstract void moveBy(int dx, int dy);
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Point implements Shape {//, Subject {
+	private int x = 0, y = 0;
+//	private List<Observer> observers;
+
+	Point(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public int getX() { return x; }
+	public int getY() { return y; }
+
+	public void setX(int x) { 
+		this.x = x; 
+//		this.notifyObservers();
+	}
+	public void setY(int y) { 
+		this.y = y; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		setX(getX() + dx);
+		setY(getY() + dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//		
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = this.observers.indexOf(o);
+//		if(i >= 0){
+//			this.observers.remove(o);
+//		}
+//	}
+//
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < this.observers.size(); i++) {
+//			Observer observer = this.observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:299)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:188)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.makeConsistent(AJReconcileWorkingCopyOperation.java:244)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.executeOperation(AJReconcileWorkingCopyOperation.java:121)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.reconcile(AJCompilationUnit.java:519)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: -1
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.consumeNormalAnnotation(AJSourceElementParser2.java:569)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.consumeRule(Parser.java:6107)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11141)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parseStatements(Parser.java:11749)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisitMethod(Parser.java:12048)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisit(Parser.java:12034)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.traverse(MethodDeclaration.java:357)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.recoverStatements(Parser.java:12142)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11204)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11490)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.parseStatements(MethodDeclaration.java:191)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:875)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.getMethodBodies(Parser.java:10179)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.parseCompilationUnit(AJSourceElementParser2.java:971)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:241)
+	... 16 more
+!SUBENTRY 1 org.eclipse.jdt.core 4 1005 2017-05-01 16:42:20.985
+!MESSAGE All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Line implements Shape {//, Subject {
+	private Point p1, p2;
+//	private List<Observer> observers;
+
+	Line(Point p1, Point p2) {
+		super();
+		this.p1 = p1;
+		this.p2 = p2;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public Point getP1() { return p1; }
+	public Point getP2() { return p2; }
+
+	public void setP1(Point p1) { 
+		this.p1 = p1; 
+//		this.notifyObservers();
+	}
+	
+	public void setP2(Point p2) { 
+		this.p2 = p2; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		getP1().moveBy(dx, dy);
+		getP2().moveBy(dx, dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = observers.indexOf(o);
+//		if(i >= 0){
+//			observers.remove(o);
+//		}
+//	}
+
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < observers.size(); i++) {
+//			Observer observer = (Observer)observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+
+public interface Subject {
+	
+	public void registerObserver(Observer o);
+	public void removeObserver(Observer o);
+	public void notifyObservers();
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Display{ //implements Observer{
+	
+//	private Subject subject;
+//	private List<Subject> subjects;
+	
+//	public Display(Subject subject){
+//		this.subject = subject;
+//		this.subject.registerObserver(this);
+//	}
+	
+	public Display(){
+//		this.subjects = new ArrayList<>();
+	}
+	
+//	public void addSubject(Subject subject){
+//		subject.registerObserver(this);
+//		this.subjects.add(subject);
+//	}
+    
+    public void update(Shape s) {
+    	System.out.println("Figure "+s+" updated!!");
+    }
+
+//	@Override
+//	public void update(Object obs) {
+//		this.update((Shape)obs);
+//	}
+}
+    
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package figures;
+
+public class MainObserverPattern {
+
+	public static void main(String[] args) {
+		// Creating points and a line
+		Point p1 = new Point(10, 10);
+		Point p2 = new Point(10, 10);
+		Line line = new Line(p1, p2);
+		
+		// Creating a display
+		Display display = new Display();
+		display.addSubject(p1);
+		display.addSubject(p2);
+		display.addSubject(line);
+		
+		// Creating a second display
+//		Display display2 = new Display();
+//		display2.addSubject(p1);
+//		display2.addSubject(p2);
+//		display2.addSubject(line);
+
+		System.out.println("Point moves...");
+		p1.setX(11);
+		p2.setX(11);
+		System.out.println();
+		System.out.println("Line moves...");
+		line.moveBy(20, 20);
+	}
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+public interface Shape {
+
+
+	public abstract void moveBy(int dx, int dy);
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Point implements Shape {//, Subject {
+	private int x = 0, y = 0;
+//	private List<Observer> observers;
+
+	Point(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public int getX() { return x; }
+	public int getY() { return y; }
+
+	public void setX(int x) { 
+		this.x = x; 
+//		this.notifyObservers();
+	}
+	public void setY(int y) { 
+		this.y = y; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		setX(getX() + dx);
+		setY(getY() + dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//		
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = this.observers.indexOf(o);
+//		if(i >= 0){
+//			this.observers.remove(o);
+//		}
+//	}
+//
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < this.observers.size(); i++) {
+//			Observer observer = this.observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+!STACK 0
+java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Line implements Shape {//, Subject {
+	private Point p1, p2;
+//	private List<Observer> observers;
+
+	Line(Point p1, Point p2) {
+		super();
+		this.p1 = p1;
+		this.p2 = p2;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public Point getP1() { return p1; }
+	public Point getP2() { return p2; }
+
+	public void setP1(Point p1) { 
+		this.p1 = p1; 
+//		this.notifyObservers();
+	}
+	
+	public void setP2(Point p2) { 
+		this.p2 = p2; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		getP1().moveBy(dx, dy);
+		getP2().moveBy(dx, dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = observers.indexOf(o);
+//		if(i >= 0){
+//			observers.remove(o);
+//		}
+//	}
+
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < observers.size(); i++) {
+//			Observer observer = (Observer)observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+
+public interface Subject {
+	
+	public void registerObserver(Observer o);
+	public void removeObserver(Observer o);
+	public void notifyObservers();
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Display{ //implements Observer{
+	
+//	private Subject subject;
+//	private List<Subject> subjects;
+	
+//	public Display(Subject subject){
+//		this.subject = subject;
+//		this.subject.registerObserver(this);
+//	}
+	
+	public Display(){
+//		this.subjects = new ArrayList<>();
+	}
+	
+//	public void addSubject(Subject subject){
+//		subject.registerObserver(this);
+//		this.subjects.add(subject);
+//	}
+    
+    public void update(Shape s) {
+    	System.out.println("Figure "+s+" updated!!");
+    }
+
+//	@Override
+//	public void update(Object obs) {
+//		this.update((Shape)obs);
+//	}
+}
+    
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package figures;
+
+public class MainObserverPattern {
+
+	public static void main(String[] args) {
+		// Creating points and a line
+		Point p1 = new Point(10, 10);
+		Point p2 = new Point(10, 10);
+		Line line = new Line(p1, p2);
+		
+		// Creating a display
+		Display display = new Display();
+		display.addSubject(p1);
+		display.addSubject(p2);
+		display.addSubject(line);
+		
+		// Creating a second display
+//		Display display2 = new Display();
+//		display2.addSubject(p1);
+//		display2.addSubject(p2);
+//		display2.addSubject(line);
+
+		System.out.println("Point moves...");
+		p1.setX(11);
+		p2.setX(11);
+		System.out.println();
+		System.out.println("Line moves...");
+		line.moveBy(20, 20);
+	}
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+public interface Shape {
+
+
+	public abstract void moveBy(int dx, int dy);
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Point implements Shape {//, Subject {
+	private int x = 0, y = 0;
+//	private List<Observer> observers;
+
+	Point(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public int getX() { return x; }
+	public int getY() { return y; }
+
+	public void setX(int x) { 
+		this.x = x; 
+//		this.notifyObservers();
+	}
+	public void setY(int y) { 
+		this.y = y; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		setX(getX() + dx);
+		setY(getY() + dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//		
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = this.observers.indexOf(o);
+//		if(i >= 0){
+//			this.observers.remove(o);
+//		}
+//	}
+//
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < this.observers.size(); i++) {
+//			Observer observer = this.observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:299)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:188)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.makeConsistent(AJReconcileWorkingCopyOperation.java:244)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.executeOperation(AJReconcileWorkingCopyOperation.java:121)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.reconcile(AJCompilationUnit.java:519)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: -1
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.consumeNormalAnnotation(AJSourceElementParser2.java:569)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.consumeRule(Parser.java:6107)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11141)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parseStatements(Parser.java:11749)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisitMethod(Parser.java:12048)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisit(Parser.java:12034)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.traverse(MethodDeclaration.java:357)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.recoverStatements(Parser.java:12142)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11204)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11490)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.parseStatements(MethodDeclaration.java:191)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:875)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.getMethodBodies(Parser.java:10179)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.parseCompilationUnit(AJSourceElementParser2.java:971)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:241)
+	... 16 more
+!SUBENTRY 1 org.eclipse.jdt.core 4 1005 2017-05-01 16:42:20.986
+!MESSAGE All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Line implements Shape {//, Subject {
+	private Point p1, p2;
+//	private List<Observer> observers;
+
+	Line(Point p1, Point p2) {
+		super();
+		this.p1 = p1;
+		this.p2 = p2;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public Point getP1() { return p1; }
+	public Point getP2() { return p2; }
+
+	public void setP1(Point p1) { 
+		this.p1 = p1; 
+//		this.notifyObservers();
+	}
+	
+	public void setP2(Point p2) { 
+		this.p2 = p2; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		getP1().moveBy(dx, dy);
+		getP2().moveBy(dx, dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = observers.indexOf(o);
+//		if(i >= 0){
+//			observers.remove(o);
+//		}
+//	}
+
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < observers.size(); i++) {
+//			Observer observer = (Observer)observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+
+public interface Subject {
+	
+	public void registerObserver(Observer o);
+	public void removeObserver(Observer o);
+	public void notifyObservers();
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Display{ //implements Observer{
+	
+//	private Subject subject;
+//	private List<Subject> subjects;
+	
+//	public Display(Subject subject){
+//		this.subject = subject;
+//		this.subject.registerObserver(this);
+//	}
+	
+	public Display(){
+//		this.subjects = new ArrayList<>();
+	}
+	
+//	public void addSubject(Subject subject){
+//		subject.registerObserver(this);
+//		this.subjects.add(subject);
+//	}
+    
+    public void update(Shape s) {
+    	System.out.println("Figure "+s+" updated!!");
+    }
+
+//	@Override
+//	public void update(Object obs) {
+//		this.update((Shape)obs);
+//	}
+}
+    
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package figures;
+
+public class MainObserverPattern {
+
+	public static void main(String[] args) {
+		// Creating points and a line
+		Point p1 = new Point(10, 10);
+		Point p2 = new Point(10, 10);
+		Line line = new Line(p1, p2);
+		
+		// Creating a display
+		Display display = new Display();
+		display.addSubject(p1);
+		display.addSubject(p2);
+		display.addSubject(line);
+		
+		// Creating a second display
+//		Display display2 = new Display();
+//		display2.addSubject(p1);
+//		display2.addSubject(p2);
+//		display2.addSubject(line);
+
+		System.out.println("Point moves...");
+		p1.setX(11);
+		p2.setX(11);
+		System.out.println();
+		System.out.println("Line moves...");
+		line.moveBy(20, 20);
+	}
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+public interface Shape {
+
+
+	public abstract void moveBy(int dx, int dy);
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Point implements Shape {//, Subject {
+	private int x = 0, y = 0;
+//	private List<Observer> observers;
+
+	Point(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public int getX() { return x; }
+	public int getY() { return y; }
+
+	public void setX(int x) { 
+		this.x = x; 
+//		this.notifyObservers();
+	}
+	public void setY(int y) { 
+		this.y = y; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		setX(getX() + dx);
+		setY(getY() + dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//		
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = this.observers.indexOf(o);
+//		if(i >= 0){
+//			this.observers.remove(o);
+//		}
+//	}
+//
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < this.observers.size(); i++) {
+//			Observer observer = this.observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+!STACK 0
+java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Line implements Shape {//, Subject {
+	private Point p1, p2;
+//	private List<Observer> observers;
+
+	Line(Point p1, Point p2) {
+		super();
+		this.p1 = p1;
+		this.p2 = p2;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public Point getP1() { return p1; }
+	public Point getP2() { return p2; }
+
+	public void setP1(Point p1) { 
+		this.p1 = p1; 
+//		this.notifyObservers();
+	}
+	
+	public void setP2(Point p2) { 
+		this.p2 = p2; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		getP1().moveBy(dx, dy);
+		getP2().moveBy(dx, dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = observers.indexOf(o);
+//		if(i >= 0){
+//			observers.remove(o);
+//		}
+//	}
+
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < observers.size(); i++) {
+//			Observer observer = (Observer)observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+
+public interface Subject {
+	
+	public void registerObserver(Observer o);
+	public void removeObserver(Observer o);
+	public void notifyObservers();
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Display{ //implements Observer{
+	
+//	private Subject subject;
+//	private List<Subject> subjects;
+	
+//	public Display(Subject subject){
+//		this.subject = subject;
+//		this.subject.registerObserver(this);
+//	}
+	
+	public Display(){
+//		this.subjects = new ArrayList<>();
+	}
+	
+//	public void addSubject(Subject subject){
+//		subject.registerObserver(this);
+//		this.subjects.add(subject);
+//	}
+    
+    public void update(Shape s) {
+    	System.out.println("Figure "+s+" updated!!");
+    }
+
+//	@Override
+//	public void update(Object obs) {
+//		this.update((Shape)obs);
+//	}
+}
+    
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package figures;
+
+public class MainObserverPattern {
+
+	public static void main(String[] args) {
+		// Creating points and a line
+		Point p1 = new Point(10, 10);
+		Point p2 = new Point(10, 10);
+		Line line = new Line(p1, p2);
+		
+		// Creating a display
+		Display display = new Display();
+		display.addSubject(p1);
+		display.addSubject(p2);
+		display.addSubject(line);
+		
+		// Creating a second display
+//		Display display2 = new Display();
+//		display2.addSubject(p1);
+//		display2.addSubject(p2);
+//		display2.addSubject(line);
+
+		System.out.println("Point moves...");
+		p1.setX(11);
+		p2.setX(11);
+		System.out.println();
+		System.out.println("Line moves...");
+		line.moveBy(20, 20);
+	}
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+public interface Shape {
+
+
+	public abstract void moveBy(int dx, int dy);
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Point implements Shape {//, Subject {
+	private int x = 0, y = 0;
+//	private List<Observer> observers;
+
+	Point(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public int getX() { return x; }
+	public int getY() { return y; }
+
+	public void setX(int x) { 
+		this.x = x; 
+//		this.notifyObservers();
+	}
+	public void setY(int y) { 
+		this.y = y; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		setX(getX() + dx);
+		setY(getY() + dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//		
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = this.observers.indexOf(o);
+//		if(i >= 0){
+//			this.observers.remove(o);
+//		}
+//	}
+//
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < this.observers.size(); i++) {
+//			Observer observer = this.observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:299)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:188)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.makeConsistent(AJReconcileWorkingCopyOperation.java:244)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.executeOperation(AJReconcileWorkingCopyOperation.java:121)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.reconcile(AJCompilationUnit.java:519)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: -1
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.consumeNormalAnnotation(AJSourceElementParser2.java:569)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.consumeRule(Parser.java:6107)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11141)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parseStatements(Parser.java:11749)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisitMethod(Parser.java:12048)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisit(Parser.java:12034)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.traverse(MethodDeclaration.java:357)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.recoverStatements(Parser.java:12142)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11204)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11490)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.parseStatements(MethodDeclaration.java:191)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:875)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.getMethodBodies(Parser.java:10179)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.parseCompilationUnit(AJSourceElementParser2.java:971)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:241)
+	... 16 more
+
+!ENTRY org.eclipse.jdt.ui 4 0 2017-05-01 16:42:21.012
+!MESSAGE Error in JDT Core during reconcile
+!STACK 1
+Java Model Exception: java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Line implements Shape {//, Subject {
+	private Point p1, p2;
+//	private List<Observer> observers;
+
+	Line(Point p1, Point p2) {
+		super();
+		this.p1 = p1;
+		this.p2 = p2;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public Point getP1() { return p1; }
+	public Point getP2() { return p2; }
+
+	public void setP1(Point p1) { 
+		this.p1 = p1; 
+//		this.notifyObservers();
+	}
+	
+	public void setP2(Point p2) { 
+		this.p2 = p2; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		getP1().moveBy(dx, dy);
+		getP2().moveBy(dx, dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = observers.indexOf(o);
+//		if(i >= 0){
+//			observers.remove(o);
+//		}
+//	}
+
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < observers.size(); i++) {
+//			Observer observer = (Observer)observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+
+public interface Subject {
+	
+	public void registerObserver(Observer o);
+	public void removeObserver(Observer o);
+	public void notifyObservers();
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Display{ //implements Observer{
+	
+//	private Subject subject;
+//	private List<Subject> subjects;
+	
+//	public Display(Subject subject){
+//		this.subject = subject;
+//		this.subject.registerObserver(this);
+//	}
+	
+	public Display(){
+//		this.subjects = new ArrayList<>();
+	}
+	
+//	public void addSubject(Subject subject){
+//		subject.registerObserver(this);
+//		this.subjects.add(subject);
+//	}
+    
+    public void update(Shape s) {
+    	System.out.println("Figure "+s+" updated!!");
+    }
+
+//	@Override
+//	public void update(Object obs) {
+//		this.update((Shape)obs);
+//	}
+}
+    
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package figures;
+
+public class MainObserverPattern {
+
+	public static void main(String[] args) {
+		// Creating points and a line
+		Point p1 = new Point(10, 10);
+		Point p2 = new Point(10, 10);
+		Line line = new Line(p1, p2);
+		
+		// Creating a display
+		Display display = new Display();
+		display.addSubject(p1);
+		display.addSubject(p2);
+		display.addSubject(line);
+		
+		// Creating a second display
+//		Display display2 = new Display();
+//		display2.addSubject(p1);
+//		display2.addSubject(p2);
+//		display2.addSubject(line);
+
+		System.out.println("Point moves...");
+		p1.setX(11);
+		p2.setX(11);
+		System.out.println();
+		System.out.println("Line moves...");
+		line.moveBy(20, 20);
+	}
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+public interface Shape {
+
+
+	public abstract void moveBy(int dx, int dy);
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Point implements Shape {//, Subject {
+	private int x = 0, y = 0;
+//	private List<Observer> observers;
+
+	Point(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public int getX() { return x; }
+	public int getY() { return y; }
+
+	public void setX(int x) { 
+		this.x = x; 
+//		this.notifyObservers();
+	}
+	public void setY(int y) { 
+		this.y = y; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		setX(getX() + dx);
+		setY(getY() + dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//		
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = this.observers.indexOf(o);
+//		if(i >= 0){
+//			this.observers.remove(o);
+//		}
+//	}
+//
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < this.observers.size(); i++) {
+//			Observer observer = this.observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:299)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:188)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.makeConsistent(AJReconcileWorkingCopyOperation.java:244)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.executeOperation(AJReconcileWorkingCopyOperation.java:121)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.reconcile(AJCompilationUnit.java:519)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+Caused by: java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Line implements Shape {//, Subject {
+	private Point p1, p2;
+//	private List<Observer> observers;
+
+	Line(Point p1, Point p2) {
+		super();
+		this.p1 = p1;
+		this.p2 = p2;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public Point getP1() { return p1; }
+	public Point getP2() { return p2; }
+
+	public void setP1(Point p1) { 
+		this.p1 = p1; 
+//		this.notifyObservers();
+	}
+	
+	public void setP2(Point p2) { 
+		this.p2 = p2; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		getP1().moveBy(dx, dy);
+		getP2().moveBy(dx, dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = observers.indexOf(o);
+//		if(i >= 0){
+//			observers.remove(o);
+//		}
+//	}
+
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < observers.size(); i++) {
+//			Observer observer = (Observer)observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+
+public interface Subject {
+	
+	public void registerObserver(Observer o);
+	public void removeObserver(Observer o);
+	public void notifyObservers();
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Display{ //implements Observer{
+	
+//	private Subject subject;
+//	private List<Subject> subjects;
+	
+//	public Display(Subject subject){
+//		this.subject = subject;
+//		this.subject.registerObserver(this);
+//	}
+	
+	public Display(){
+//		this.subjects = new ArrayList<>();
+	}
+	
+//	public void addSubject(Subject subject){
+//		subject.registerObserver(this);
+//		this.subjects.add(subject);
+//	}
+    
+    public void update(Shape s) {
+    	System.out.println("Figure "+s+" updated!!");
+    }
+
+//	@Override
+//	public void update(Object obs) {
+//		this.update((Shape)obs);
+//	}
+}
+    
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package figures;
+
+public class MainObserverPattern {
+
+	public static void main(String[] args) {
+		// Creating points and a line
+		Point p1 = new Point(10, 10);
+		Point p2 = new Point(10, 10);
+		Line line = new Line(p1, p2);
+		
+		// Creating a display
+		Display display = new Display();
+		display.addSubject(p1);
+		display.addSubject(p2);
+		display.addSubject(line);
+		
+		// Creating a second display
+//		Display display2 = new Display();
+//		display2.addSubject(p1);
+//		display2.addSubject(p2);
+//		display2.addSubject(line);
+
+		System.out.println("Point moves...");
+		p1.setX(11);
+		p2.setX(11);
+		System.out.println();
+		System.out.println("Line moves...");
+		line.moveBy(20, 20);
+	}
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+public interface Shape {
+
+
+	public abstract void moveBy(int dx, int dy);
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Point implements Shape {//, Subject {
+	private int x = 0, y = 0;
+//	private List<Observer> observers;
+
+	Point(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public int getX() { return x; }
+	public int getY() { return y; }
+
+	public void setX(int x) { 
+		this.x = x; 
+//		this.notifyObservers();
+	}
+	public void setY(int y) { 
+		this.y = y; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		setX(getX() + dx);
+		setY(getY() + dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//		
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = this.observers.indexOf(o);
+//		if(i >= 0){
+//			this.observers.remove(o);
+//		}
+//	}
+//
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < this.observers.size(); i++) {
+//			Observer observer = this.observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	... 17 more
+Caused by: java.lang.ArrayIndexOutOfBoundsException: -1
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.consumeNormalAnnotation(AJSourceElementParser2.java:569)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.consumeRule(Parser.java:6107)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11141)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parseStatements(Parser.java:11749)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisitMethod(Parser.java:12048)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisit(Parser.java:12034)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.traverse(MethodDeclaration.java:357)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.recoverStatements(Parser.java:12142)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11204)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11490)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.parseStatements(MethodDeclaration.java:191)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:875)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.getMethodBodies(Parser.java:10179)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.parseCompilationUnit(AJSourceElementParser2.java:971)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:241)
+	... 16 more
+Caused by: java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Line implements Shape {//, Subject {
+	private Point p1, p2;
+//	private List<Observer> observers;
+
+	Line(Point p1, Point p2) {
+		super();
+		this.p1 = p1;
+		this.p2 = p2;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public Point getP1() { return p1; }
+	public Point getP2() { return p2; }
+
+	public void setP1(Point p1) { 
+		this.p1 = p1; 
+//		this.notifyObservers();
+	}
+	
+	public void setP2(Point p2) { 
+		this.p2 = p2; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		getP1().moveBy(dx, dy);
+		getP2().moveBy(dx, dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = observers.indexOf(o);
+//		if(i >= 0){
+//			observers.remove(o);
+//		}
+//	}
+
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < observers.size(); i++) {
+//			Observer observer = (Observer)observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+
+public interface Subject {
+	
+	public void registerObserver(Observer o);
+	public void removeObserver(Observer o);
+	public void notifyObservers();
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Display{ //implements Observer{
+	
+//	private Subject subject;
+//	private List<Subject> subjects;
+	
+//	public Display(Subject subject){
+//		this.subject = subject;
+//		this.subject.registerObserver(this);
+//	}
+	
+	public Display(){
+//		this.subjects = new ArrayList<>();
+	}
+	
+//	public void addSubject(Subject subject){
+//		subject.registerObserver(this);
+//		this.subjects.add(subject);
+//	}
+    
+    public void update(Shape s) {
+    	System.out.println("Figure "+s+" updated!!");
+    }
+
+//	@Override
+//	public void update(Object obs) {
+//		this.update((Shape)obs);
+//	}
+}
+    
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package figures;
+
+public class MainObserverPattern {
+
+	public static void main(String[] args) {
+		// Creating points and a line
+		Point p1 = new Point(10, 10);
+		Point p2 = new Point(10, 10);
+		Line line = new Line(p1, p2);
+		
+		// Creating a display
+		Display display = new Display();
+		display.addSubject(p1);
+		display.addSubject(p2);
+		display.addSubject(line);
+		
+		// Creating a second display
+//		Display display2 = new Display();
+//		display2.addSubject(p1);
+//		display2.addSubject(p2);
+//		display2.addSubject(line);
+
+		System.out.println("Point moves...");
+		p1.setX(11);
+		p2.setX(11);
+		System.out.println();
+		System.out.println("Line moves...");
+		line.moveBy(20, 20);
+	}
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+public interface Shape {
+
+
+	public abstract void moveBy(int dx, int dy);
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Point implements Shape {//, Subject {
+	private int x = 0, y = 0;
+//	private List<Observer> observers;
+
+	Point(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public int getX() { return x; }
+	public int getY() { return y; }
+
+	public void setX(int x) { 
+		this.x = x; 
+//		this.notifyObservers();
+	}
+	public void setY(int y) { 
+		this.y = y; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		setX(getX() + dx);
+		setY(getY() + dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//		
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = this.observers.indexOf(o);
+//		if(i >= 0){
+//			this.observers.remove(o);
+//		}
+//	}
+//
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < this.observers.size(); i++) {
+//			Observer observer = this.observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:299)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:188)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.makeConsistent(AJReconcileWorkingCopyOperation.java:244)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.executeOperation(AJReconcileWorkingCopyOperation.java:121)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.reconcile(AJCompilationUnit.java:519)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: -1
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.consumeNormalAnnotation(AJSourceElementParser2.java:569)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.consumeRule(Parser.java:6107)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11141)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parseStatements(Parser.java:11749)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisitMethod(Parser.java:12048)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisit(Parser.java:12034)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.traverse(MethodDeclaration.java:357)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.recoverStatements(Parser.java:12142)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11204)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11490)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.parseStatements(MethodDeclaration.java:191)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:875)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.getMethodBodies(Parser.java:10179)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.parseCompilationUnit(AJSourceElementParser2.java:971)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:241)
+	... 16 more
+!SUBENTRY 1 org.eclipse.jdt.core 4 1005 2017-05-01 16:42:21.012
+!MESSAGE All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Line implements Shape {//, Subject {
+	private Point p1, p2;
+//	private List<Observer> observers;
+
+	Line(Point p1, Point p2) {
+		super();
+		this.p1 = p1;
+		this.p2 = p2;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public Point getP1() { return p1; }
+	public Point getP2() { return p2; }
+
+	public void setP1(Point p1) { 
+		this.p1 = p1; 
+//		this.notifyObservers();
+	}
+	
+	public void setP2(Point p2) { 
+		this.p2 = p2; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		getP1().moveBy(dx, dy);
+		getP2().moveBy(dx, dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = observers.indexOf(o);
+//		if(i >= 0){
+//			observers.remove(o);
+//		}
+//	}
+
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < observers.size(); i++) {
+//			Observer observer = (Observer)observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+
+public interface Subject {
+	
+	public void registerObserver(Observer o);
+	public void removeObserver(Observer o);
+	public void notifyObservers();
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Display{ //implements Observer{
+	
+//	private Subject subject;
+//	private List<Subject> subjects;
+	
+//	public Display(Subject subject){
+//		this.subject = subject;
+//		this.subject.registerObserver(this);
+//	}
+	
+	public Display(){
+//		this.subjects = new ArrayList<>();
+	}
+	
+//	public void addSubject(Subject subject){
+//		subject.registerObserver(this);
+//		this.subjects.add(subject);
+//	}
+    
+    public void update(Shape s) {
+    	System.out.println("Figure "+s+" updated!!");
+    }
+
+//	@Override
+//	public void update(Object obs) {
+//		this.update((Shape)obs);
+//	}
+}
+    
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package figures;
+
+public class MainObserverPattern {
+
+	public static void main(String[] args) {
+		// Creating points and a line
+		Point p1 = new Point(10, 10);
+		Point p2 = new Point(10, 10);
+		Line line = new Line(p1, p2);
+		
+		// Creating a display
+		Display display = new Display();
+		display.addSubject(p1);
+		display.addSubject(p2);
+		display.addSubject(line);
+		
+		// Creating a second display
+//		Display display2 = new Display();
+//		display2.addSubject(p1);
+//		display2.addSubject(p2);
+//		display2.addSubject(line);
+
+		System.out.println("Point moves...");
+		p1.setX(11);
+		p2.setX(11);
+		System.out.println();
+		System.out.println("Line moves...");
+		line.moveBy(20, 20);
+	}
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+public interface Shape {
+
+
+	public abstract void moveBy(int dx, int dy);
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Point implements Shape {//, Subject {
+	private int x = 0, y = 0;
+//	private List<Observer> observers;
+
+	Point(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public int getX() { return x; }
+	public int getY() { return y; }
+
+	public void setX(int x) { 
+		this.x = x; 
+//		this.notifyObservers();
+	}
+	public void setY(int y) { 
+		this.y = y; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		setX(getX() + dx);
+		setY(getY() + dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//		
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = this.observers.indexOf(o);
+//		if(i >= 0){
+//			this.observers.remove(o);
+//		}
+//	}
+//
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < this.observers.size(); i++) {
+//			Observer observer = this.observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+!STACK 0
+java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+import java.util.List;
+import java.util.Vector;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+////	private Subject subject;
+////	private List<Subject> subjects;
+//	
+//	private Subject Display.subject;
+//	private List<Subject> Display.subjects;
+//	
+////	public void addSubject(Subject subject){
+////		subject.registerObserver(this);
+////		this.subjects.add(subject);
+////	}
+//	
+//	public void Display.addSubject(Subject subject) {
+//		subject.registerObserver(Display);
+//		this.subjects.add(subject);
+//	}
+	
+	private Vector Shape.observers = new Vector();
+
+    public static void addObserver(Shape p, Display s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Shape p, Display s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) && call(void Point.set*(int));
+
+    after(Shape p): changes(p) {
+    	
+    	for()
+    	
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Display)iter.next());
+        }
+    }
+
+    static void updateObserver(Shape p, Display s) {
+        s.display(p);
+    }
+	
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Line implements Shape {//, Subject {
+	private Point p1, p2;
+//	private List<Observer> observers;
+
+	Line(Point p1, Point p2) {
+		super();
+		this.p1 = p1;
+		this.p2 = p2;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public Point getP1() { return p1; }
+	public Point getP2() { return p2; }
+
+	public void setP1(Point p1) { 
+		this.p1 = p1; 
+//		this.notifyObservers();
+	}
+	
+	public void setP2(Point p2) { 
+		this.p2 = p2; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		getP1().moveBy(dx, dy);
+		getP2().moveBy(dx, dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = observers.indexOf(o);
+//		if(i >= 0){
+//			observers.remove(o);
+//		}
+//	}
+
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < observers.size(); i++) {
+//			Observer observer = (Observer)observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+
+public interface Subject {
+	
+	public void registerObserver(Observer o);
+	public void removeObserver(Observer o);
+	public void notifyObservers();
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Display{ //implements Observer{
+	
+//	private Subject subject;
+//	private List<Subject> subjects;
+	
+//	public Display(Subject subject){
+//		this.subject = subject;
+//		this.subject.registerObserver(this);
+//	}
+	
+	public Display(){
+//		this.subjects = new ArrayList<>();
+	}
+	
+//	public void addSubject(Subject subject){
+//		subject.registerObserver(this);
+//		this.subjects.add(subject);
+//	}
+    
+    public void update(Shape s) {
+    	System.out.println("Figure "+s+" updated!!");
+    }
+
+//	@Override
+//	public void update(Object obs) {
+//		this.update((Shape)obs);
+//	}
+}
+    
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package figures;
+
+public class MainObserverPattern {
+
+	public static void main(String[] args) {
+		// Creating points and a line
+		Point p1 = new Point(10, 10);
+		Point p2 = new Point(10, 10);
+		Line line = new Line(p1, p2);
+		
+		// Creating a display
+		Display display = new Display();
+		display.addSubject(p1);
+		display.addSubject(p2);
+		display.addSubject(line);
+		
+		// Creating a second display
+//		Display display2 = new Display();
+//		display2.addSubject(p1);
+//		display2.addSubject(p2);
+//		display2.addSubject(line);
+
+		System.out.println("Point moves...");
+		p1.setX(11);
+		p2.setX(11);
+		System.out.println();
+		System.out.println("Line moves...");
+		line.moveBy(20, 20);
+	}
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+public interface Shape {
+
+
+	public abstract void moveBy(int dx, int dy);
+
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+
+package figures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Point implements Shape {//, Subject {
+	private int x = 0, y = 0;
+//	private List<Observer> observers;
+
+	Point(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+//		this.observers = new ArrayList<Observer>();
+	}
+
+	public int getX() { return x; }
+	public int getY() { return y; }
+
+	public void setX(int x) { 
+		this.x = x; 
+//		this.notifyObservers();
+	}
+	public void setY(int y) { 
+		this.y = y; 
+//		this.notifyObservers();
+	}
+
+	public void moveBy(int dx, int dy) {
+		setX(getX() + dx);
+		setY(getY() + dy);
+//		this.notifyObservers();
+	}
+
+//	@Override
+//	public void registerObserver(Observer o) {
+//		this.observers.add(o);
+//		
+//	}
+
+//	@Override
+//	public void removeObserver(Observer o) {
+//		int i = this.observers.indexOf(o);
+//		if(i >= 0){
+//			this.observers.remove(o);
+//		}
+//	}
+//
+//	@Override
+//	public void notifyObservers() {
+//		for (int i = 0; i < this.observers.size(); i++) {
+//			Observer observer = this.observers.get(i);
+//			observer.update(this);
+//		}
+//	}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:299)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:188)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.makeConsistent(AJReconcileWorkingCopyOperation.java:244)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.executeOperation(AJReconcileWorkingCopyOperation.java:121)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.reconcile(AJCompilationUnit.java:519)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: -1
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.consumeNormalAnnotation(AJSourceElementParser2.java:569)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.consumeRule(Parser.java:6107)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11141)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parseStatements(Parser.java:11749)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisitMethod(Parser.java:12048)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisit(Parser.java:12034)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.traverse(MethodDeclaration.java:357)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.recoverStatements(Parser.java:12142)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11204)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11490)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.parseStatements(MethodDeclaration.java:191)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:875)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.getMethodBodies(Parser.java:10179)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.parseCompilationUnit(AJSourceElementParser2.java:971)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:241)
+	... 16 more
+
+!ENTRY org.eclipse.jdt.ui 4 0 2017-05-01 16:43:57.876
+!MESSAGE Invalid extension to quickFixProcessor. Must extends 'org.eclipse.jdt.ui.text.java.IQuickAssistProcessor'.org.eclipse.jdt.junit
+
+!ENTRY org.eclipse.jdt.ui 4 0 2017-05-01 16:43:57.879
+!MESSAGE Invalid extension to quickFixProcessor. Must extends 'org.eclipse.jdt.ui.text.java.IQuickAssistProcessor'.org.eclipse.pde.api.tools.ui
+
+!ENTRY org.eclipse.jdt.ui 4 0 2017-05-01 16:43:57.880
+!MESSAGE Invalid extension to quickFixProcessor. Must extends 'org.eclipse.jdt.ui.text.java.IQuickAssistProcessor'.org.eclipse.pde.ui

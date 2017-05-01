@@ -10,22 +10,31 @@ public class MainObserverPattern {
 		
 		// Creating a display
 		Display display = new Display();
-		display.addSubject(p1);
-		display.addSubject(p2);
-		display.addSubject(line);
-		
-		// Creating a second display
-//		Display display2 = new Display();
-//		display2.addSubject(p1);
-//		display2.addSubject(p2);
-//		display2.addSubject(line);
+		p1.addObserver(display);
+		p2.addObserver(display);
+		line.addObserver(display);
 
-		System.out.println("Point moves...");
+		// Creating a second display
+		Display display2 = new Display();
+		p1.addObserver(display2);
+		p2.addObserver(display2);
+		line.addObserver(display2);
+
+		System.out.println("Points move...");
 		p1.setX(11);
 		p2.setX(11);
 		System.out.println();
 		System.out.println("Line moves...");
 		line.moveBy(20, 20);
+		
+		p1.removeObserver(display);
+		line.removeObserver(display2);
+		System.out.println("Point moves...");
+		p1.setX(11);
+		p2.setX(11);
+		System.out.println("Line moves...");
+		line.moveBy(20, 20);
+		
 	}
 
 }

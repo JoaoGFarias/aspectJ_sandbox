@@ -1,0 +1,56 @@
+package aspects;
+
+import figures.*;
+
+public aspect ExceptionHandler {
+	
+	pointcut eh(): (call( * set*(*)) || call( * moveBy(*, *))) 
+	                  && within(MainAJ06);
+	
+	declare soft: PointBoundException : eh();
+	
+	// handlers genericos ou iguais foram tratados em um unico lugar!
+	void around(): eh() {
+		try {
+			System.out.println(thisJoinPoint);
+			proceed();
+		} catch (PointBoundException e) {
+			 e.printStackTrace();
+		}
+	}
+	
+//	void around(): call( * set*(*)) && within(MainAJ06)  {
+//		try {
+//			System.out.println(thisJoinPoint);
+//			proceed();
+//		} catch (PointBoundException e) {
+//			System.out.println("handler para set*");
+//		}
+//	}
+//	
+//	void around(): call( * moveBy(*, *)) && within(MainAJ06)  {
+//		try {
+//			System.out.println(thisJoinPoint);
+//			proceed();
+//		} catch (PointBoundException e) {
+//			System.out.println("handler para moveBy*");
+//		}
+//	}
+	
+//	void around(): eh() {
+//		try {
+//			System.out.println(thisJoinPoint);
+//			proceed();
+//		} catch (PointBoundException e) {
+//			if(thisJoinPoint.getSignature().getName().startsWith("set")){
+//				System.out.println("handler para set*");
+//				e.printStackTrace();
+//			}
+//			else if(thisJoinPoint.getSignature().getName().startsWith("moveBy")){
+//				System.out.println("handler para moveBy*");
+//				e.printStackTrace();
+//			}
+//		}
+//	}
+
+}

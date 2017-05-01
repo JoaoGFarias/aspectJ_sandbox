@@ -1,0 +1,17 @@
+
+package figures;
+
+public class Display {
+
+	private int id;
+	
+	public Display() {
+		this.id = System.identityHashCode(this);
+	}
+    
+    public void update(Shape s) {
+    	System.out.println("Figure "+s+" updated!!");
+    }
+
+}
+    

@@ -1,0 +1,19 @@
+package aspects;
+
+import aspects.pointcut;
+import figures.*;
+public aspect DisplayUpdating2 {
+	
+	pointcut changes(): (call(public void Shape+.set*(*)) ||
+            call(public void Shape.moveBy(int, int)));
+	
+	// cflowbelow is used in the getting started with AspectJ paper
+	after(): changes() {
+		System.out.println("***************************************************");
+		System.out.println("signature: "+thisJoinPointStaticPart.getSignature());
+		System.out.println("join point: "+thisJoinPoint);
+		System.out.println("where: "+thisJoinPointStaticPart.getSourceLocation());
+		Display.update();
+		System.out.println("***************************************************");
+	}
+}

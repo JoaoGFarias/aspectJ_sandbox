@@ -1,0 +1,24 @@
+
+import java.util.List;
+
+import figures.*;
+
+public aspect DisplayObserverAspect {
+
+//	private Subject subject;
+//	private List<Subject> subjects;
+	
+	private Subject Display.subject;
+	private List<Subject> Display.subjects;
+	
+//	public void addSubject(Subject subject){
+//		subject.registerObserver(this);
+//		this.subjects.add(subject);
+//	}
+	
+	public void Display.addSubject(Subject subject) {
+		subject.registerObserver(Display);
+		this.subjects.add(subject);
+	}
+	
+}

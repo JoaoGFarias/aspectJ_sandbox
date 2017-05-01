@@ -1,0 +1,10 @@
+
+package figures;
+
+public class Display {
+    
+    public void update(Shape s) {
+    	System.out.println("Figure "+s+" updated!!");
+    }
+}
+    

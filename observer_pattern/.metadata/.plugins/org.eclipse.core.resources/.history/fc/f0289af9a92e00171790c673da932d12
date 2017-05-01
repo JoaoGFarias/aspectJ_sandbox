@@ -1,0 +1,36 @@
+package figures;
+
+public class MainObserverPattern {
+
+	public static void main(String[] args) {
+		// Creating points and a line
+		Point p1 = new Point(10, 10);
+		Point p2 = new Point(10, 10);
+		Line line = new Line(p1, p2);
+		
+		// Creating a display
+		Display display = new Display();
+		p1.addObserver(display);
+		p2.addObserver(display);
+		line.addObserver(display);
+
+		// Creating a second display
+		Display display2 = new Display();
+		p1.addObserver(display2);
+		p2.addObserver(display2);
+		line.addObserver(display2);
+
+		System.out.println("Point moves...");
+		p1.setX(11);
+		p2.setX(11);
+		System.out.println();
+		System.out.println("Line moves...");
+		line.moveBy(20, 20);
+		
+		p1.removeObserver(display);
+		line.removeObserver(display2);
+		
+		
+	}
+
+}

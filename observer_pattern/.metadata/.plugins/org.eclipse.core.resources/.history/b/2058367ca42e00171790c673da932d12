@@ -1,0 +1,8 @@
+
+import figures.*
+
+public aspect DisplayObserverAspect {
+
+	
+	
+}

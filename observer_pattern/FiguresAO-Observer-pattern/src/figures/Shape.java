@@ -1,8 +1,8 @@
 
 package figures;
 
-public interface Shape {
+public abstract class Shape {
 
-    public abstract void moveBy(int dx, int dy);
+	public abstract void moveBy(int dx, int dy);
 
 }

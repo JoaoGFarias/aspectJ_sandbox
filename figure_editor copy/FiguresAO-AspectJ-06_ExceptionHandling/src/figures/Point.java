@@ -1,0 +1,30 @@
+
+package figures;
+
+public class Point {
+	private int x = 0, y = 0;
+
+	public Point(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+	}
+
+	public int getX() { return x; }
+	public int getY() { return y; }
+
+	public void setX(int x) throws PointBoundException { 
+		if(x < 0){
+			throw new PointBoundException("X coordinate must be positive!");
+		}
+		this.x = x; 
+	}
+	public void setY(int y) { 
+		this.y = y; 
+	}
+
+	public void moveBy(int dx, int dy) throws PointBoundException{
+		setX(getX() + dx);
+		setY(getY() + dy);
+	}
+}
