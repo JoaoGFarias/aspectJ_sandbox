@@ -1,0 +1,12 @@
+
+package figures;
+
+public interface Shape {
+
+    public abstract void moveBy(int dx, int dy);
+    
+    default void eat(){
+    	  System.out.println("Animal Start eating ....");
+    }
+
+}

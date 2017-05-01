@@ -85,3 +85,48 @@ Java Model Exception: Java Model Status [figures [in src/FiguresOO-Observer-patt
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
 !SUBENTRY 1 org.eclipse.jdt.core 4 969 2017-04-30 18:59:20.347
 !MESSAGE figures [in src/FiguresOO-Observer-pattern/src/figures [in Observer_OO]] does not exist
+
+!ENTRY org.eclipse.jface.text 2 0 2017-04-30 19:40:32.537
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-04-30 19:40:32.538
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.ajdt.ui 4 0 2017-04-30 21:31:46.269
+!MESSAGE Compile error: NullPointerException thrown: null
+!STACK 0
+java.lang.NullPointerException
+	at org.aspectj.ajdt.internal.compiler.ast.AdviceDeclaration.getDeclaredParameterCount(AdviceDeclaration.java:187)
+	at org.aspectj.ajdt.internal.compiler.ast.AdviceDeclaration.buildArgNameRepresentation(AdviceDeclaration.java:308)
+	at org.aspectj.ajdt.internal.compiler.ast.AdviceDeclaration.addAtAspectJAnnotations(AdviceDeclaration.java:285)
+	at org.aspectj.ajdt.internal.compiler.ast.AddAtAspectJAnnotationsVisitor.visit(AddAtAspectJAnnotationsVisitor.java:62)
+	at org.aspectj.org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.traverse(MethodDeclaration.java:324)
+	at org.aspectj.org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.traverse(TypeDeclaration.java:1397)
+	at org.aspectj.org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration.traverse(CompilationUnitDeclaration.java:763)
+	at org.aspectj.org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration.traverse(CompilationUnitDeclaration.java:724)
+	at org.aspectj.ajdt.internal.compiler.AjPipeliningCompilerAdapter.beforeProcessing(AjPipeliningCompilerAdapter.java:274)
+	at org.aspectj.ajdt.internal.compiler.CompilerAdapter.ajc$before$org_aspectj_ajdt_internal_compiler_CompilerAdapter$3$6b855184(CompilerAdapter.aj:94)
+	at org.aspectj.org.eclipse.jdt.internal.compiler.Compiler.process(Compiler.java:866)
+	at org.aspectj.org.eclipse.jdt.internal.compiler.Compiler.processCompiledUnits(Compiler.java:550)
+	at org.aspectj.org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:462)
+	at org.aspectj.org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:417)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.performCompilation(AjBuildManager.java:1036)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.performBuild(AjBuildManager.java:272)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.batchBuild(AjBuildManager.java:185)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.performBuild(AjBuildManager.java:320)
+	at org.aspectj.ajdt.internal.core.builder.AjBuildManager.incrementalBuild(AjBuildManager.java:189)
+	at org.aspectj.ajde.core.internal.AjdeCoreBuildManager.performBuild(AjdeCoreBuildManager.java:127)
+	at org.aspectj.ajde.core.AjCompiler.build(AjCompiler.java:91)
+	at org.eclipse.ajdt.core.builder.AJBuilder.build(AJBuilder.java:257)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:735)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:301)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:304)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:360)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:383)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)

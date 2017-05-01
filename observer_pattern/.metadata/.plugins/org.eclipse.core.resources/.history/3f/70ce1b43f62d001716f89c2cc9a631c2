@@ -1,0 +1,23 @@
+package figures;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+
+public aspect ObserverProtocol {
+
+	private HashMap subjectsObservers;
+	
+	protected List getObservers(Subject subject) {
+	    if (subjectsObservers == null) {
+	    	subjectsObservers = new HashMap();
+	    }
+	    List observers = (List)subjectsObservers.get(subject);
+	    if ( observers == null ) {
+	      observers = new LinkedList();
+	      subjectsObservers.put(subject, observers);
+	    }
+	    return observers;
+	  }
+	
+}

@@ -1,0 +1,8 @@
+package figures.aspects;
+
+public aspect Observer {
+	
+	pointcut observerUpdate():
+        call(void Shape.get*(..));
+	
+}

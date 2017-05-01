@@ -1,0 +1,8 @@
+
+package figures;
+
+public interface Observable {
+
+    public void moveBy(int dx, int dy);
+
+}

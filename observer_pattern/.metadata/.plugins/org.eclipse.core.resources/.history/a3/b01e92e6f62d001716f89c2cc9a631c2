@@ -1,0 +1,30 @@
+package figures.aspects;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+
+import figures.Observer;
+import figures.Subject;
+
+public aspect ObserverAspect {
+
+	private HashMap<Subject,List<Observer>> subjectsObservers;
+	
+	protected List<Observer> getObservers(Subject subject) {
+	    
+		if (this.subjectsObservers == null) {
+	    	this.subjectsObservers = new HashMap<Subject,List<Observer>>();
+	    }
+	    
+	    List<Observer> observers = this.subjectsObservers.get(subject);
+	    
+	    if ( observers == null ) {
+	      observers = new LinkedList<Observer>();
+	      this.subjectsObservers.put(subject, observers);
+	    }
+	    
+	    return observers;
+	  }
+	
+}

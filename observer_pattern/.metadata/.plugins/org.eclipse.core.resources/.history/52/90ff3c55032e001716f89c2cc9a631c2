@@ -1,0 +1,11 @@
+package figures.aspects;
+
+public aspect Observer {
+	
+	pointcut observerUpdate():
+        call(void Shape.set*(Point));
+	
+	after() returning: move() {
+	    System.out.println("just successfully moved");
+	}
+}

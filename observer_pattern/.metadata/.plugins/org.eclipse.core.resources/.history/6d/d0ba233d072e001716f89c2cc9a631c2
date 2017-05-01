@@ -1,0 +1,22 @@
+package figures.observerPattern;
+
+import figures.Observer;
+import figures.Subject;
+
+public aspect DisplayShapeObserver extends ObserverProcess {
+
+	declare parents : Playable extends Subject;
+	declare parents : BillingService implements Observer;
+	 
+	
+	protected pointcut subjectUpdate(Subject s):
+		this(s) &&
+		call(void Line.set*(Point));
+
+	@Override
+	protected void updateObserver(Subject subject, Observer observer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

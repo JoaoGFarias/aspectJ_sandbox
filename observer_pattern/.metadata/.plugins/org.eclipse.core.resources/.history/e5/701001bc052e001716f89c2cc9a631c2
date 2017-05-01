@@ -1,0 +1,7 @@
+package figures.observerPattern;
+
+public aspect SubjectUpdate {
+	
+	protected abstract pointcut subjectChange(Subject s);
+
+}

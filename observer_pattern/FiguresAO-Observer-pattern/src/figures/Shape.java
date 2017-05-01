@@ -1,0 +1,8 @@
+
+package figures;
+
+public interface Shape {
+
+    public abstract void moveBy(int dx, int dy);
+
+}

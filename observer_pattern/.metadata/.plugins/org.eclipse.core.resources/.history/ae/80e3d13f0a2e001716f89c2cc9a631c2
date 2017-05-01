@@ -1,0 +1,17 @@
+package figures.observerPattern;
+
+import figures.Point;
+
+public aspect Observer {
+	
+	pointcut observerUpdate():
+        call(void Shape+.*(..));
+	
+	after() returning: observerUpdate() {
+		((Point)thisJoinPoint.getTarget()).test();
+//	    for (int i = 0; i < this.observers.size(); i++) {
+//			Observer observer = this.observers.get(i);
+//			observer.update(this);
+//		}
+	}
+}
