@@ -1,8 +1,0 @@
-
-package figures;
-
-public abstract class Shape {
-
-    public void moveBy(int dx, int dy);
-
-}
